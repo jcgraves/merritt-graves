@@ -1,0 +1,173 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Merritt Graves - Science fiction and speculative fiction author." } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-dark-900 text-gray-100 font-sans antialiased relative min-h-screen">
+    <!-- Space Background -->
+    <div class="fixed inset-0 -z-10 overflow-hidden">
+      <!-- Deep space base -->
+      <div class="absolute inset-0 bg-[#050510]"></div>
+
+      <!-- Nebula layers -->
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-accent-blue/[0.08] via-transparent to-accent-purple/[0.06]"></div>
+      <div class="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-accent-blue/[0.04] rounded-full blur-[150px]"></div>
+      <div class="absolute top-1/2 right-0 w-[600px] h-[600px] bg-accent-purple/[0.05] rounded-full blur-[130px]"></div>
+      <div class="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-cyan-600/[0.03] rounded-full blur-[120px]"></div>
+
+      <!-- Stars layer 1 - small distant stars -->
+      <div class="absolute inset-0" style="background-image: radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.7), transparent), radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.5), transparent), radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent), radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.4), transparent); background-size: 200px 200px;"></div>
+
+      <!-- Stars layer 2 - medium stars -->
+      <div class="absolute inset-0" style="background-image: radial-gradient(1.5px 1.5px at 150px 150px, rgba(255,255,255,0.7), transparent), radial-gradient(1.5px 1.5px at 200px 220px, rgba(255,255,255,0.5), transparent), radial-gradient(1px 1px at 250px 280px, rgba(255,255,255,0.6), transparent), radial-gradient(1.5px 1.5px at 300px 100px, rgba(255,255,255,0.4), transparent); background-size: 350px 350px;"></div>
+
+      <!-- Stars layer 3 - bright accent stars -->
+      <div class="absolute inset-0" style="background-image: radial-gradient(2px 2px at 100px 200px, rgba(147,197,253,0.9), transparent), radial-gradient(2px 2px at 400px 300px, rgba(196,181,253,0.8), transparent), radial-gradient(1.5px 1.5px at 600px 150px, rgba(255,255,255,0.9), transparent), radial-gradient(2px 2px at 800px 400px, rgba(165,243,252,0.7), transparent); background-size: 1000px 500px;"></div>
+
+      <!-- Twinkling stars - individual animated points -->
+      <div class="twinkle-container">
+        <div class="twinkle twinkle-1"></div>
+        <div class="twinkle twinkle-2"></div>
+        <div class="twinkle twinkle-3"></div>
+        <div class="twinkle twinkle-4"></div>
+        <div class="twinkle twinkle-5"></div>
+        <div class="twinkle twinkle-6"></div>
+        <div class="twinkle twinkle-7"></div>
+        <div class="twinkle twinkle-8"></div>
+      </div>
+
+      <!-- Subtle noise for texture -->
+      <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=&quot;0 0 256 256&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cfilter id=&quot;noise&quot;%3E%3CfeTurbulence type=&quot;fractalNoise&quot; baseFrequency=&quot;0.9&quot; numOctaves=&quot;4&quot; stitchTiles=&quot;stitch&quot;/%3E%3C/filter%3E%3Crect width=&quot;100%25&quot; height=&quot;100%25&quot; filter=&quot;url(%23noise)&quot;/%3E%3C/svg%3E');"></div>
+    </div>
+
+    <style>
+      /* Twinkle animation - respects reduced motion */
+      @media (prefers-reduced-motion: no-preference) {
+        .twinkle-container {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+
+        .twinkle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: white;
+          border-radius: 50%;
+          opacity: 0;
+          animation: twinkle ease-in-out infinite;
+        }
+
+        /* Position each star randomly across the viewport */
+        .twinkle-1 { top: 15%; left: 10%; animation-duration: 4s; animation-delay: 0s; }
+        .twinkle-2 { top: 25%; left: 85%; animation-duration: 5s; animation-delay: 1s; }
+        .twinkle-3 { top: 45%; left: 30%; animation-duration: 4.5s; animation-delay: 2s; }
+        .twinkle-4 { top: 65%; left: 70%; animation-duration: 5.5s; animation-delay: 0.5s; }
+        .twinkle-5 { top: 80%; left: 20%; animation-duration: 4s; animation-delay: 3s; }
+        .twinkle-6 { top: 35%; left: 55%; animation-duration: 6s; animation-delay: 1.5s; }
+        .twinkle-7 { top: 55%; left: 90%; animation-duration: 4.5s; animation-delay: 2.5s; }
+        .twinkle-8 { top: 10%; left: 45%; animation-duration: 5s; animation-delay: 3.5s; }
+
+        /* Color variations */
+        .twinkle-2, .twinkle-5 { background: rgb(147, 197, 253); width: 2.5px; height: 2.5px; }
+        .twinkle-4, .twinkle-7 { background: rgb(196, 181, 253); }
+        .twinkle-6 { background: rgb(165, 243, 252); width: 2.5px; height: 2.5px; }
+
+        @keyframes twinkle {
+          0%, 100% { opacity: 0; transform: scale(0.5); }
+          50% { opacity: 1; transform: scale(1); }
+        }
+      }
+
+      /* Hide twinkle elements when reduced motion is preferred */
+      @media (prefers-reduced-motion: reduce) {
+        .twinkle-container {
+          display: none;
+        }
+      }
+    </style>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-md border-b border-white/5">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="/" class="text-xl font-semibold tracking-tight hover:text-accent-blue transition-colors">
+          Merritt Graves
+        </a>
+        <div class="flex gap-8 text-sm">
+          <a href="/#books" class="text-gray-400 hover:text-white transition-colors">Books</a>
+          <a href="/#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+          <a href="/#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-20">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <!-- Newsletter CTA -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 mb-8 border-b border-white/5">
+          <div class="text-center sm:text-left">
+            <p class="font-medium text-white">Stay in the loop</p>
+            <p class="text-gray-500 text-sm">Get notified about new releases and projects</p>
+          </div>
+          <a
+            href="https://mailchi.mp/4a6bc90e5ecb/lakesofmars"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-purple hover:bg-accent-purple/80 rounded-lg font-medium text-sm transition-all hover:scale-105"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Subscribe to Newsletter
+          </a>
+        </div>
+
+        <!-- Bottom row -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-gray-500 text-sm">
+            &copy; {new Date().getFullYear()} Merritt Graves. All rights reserved.
+          </p>
+          <div class="flex gap-5">
+            <a href="https://x.com/Merritt_Graves/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors" aria-label="X">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/merritt_graves/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors" aria-label="Instagram">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100080658635399" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

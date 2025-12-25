@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import cover from '../../images/LAKES OF MARS EBOOK COVER - PURPLE FLARE.jpg';
+---
+
+<BaseLayout
+  title="Lakes of Mars | Merritt Graves"
+  description="Aaron Sheridan doesn't want to live anymore. After his family dies in a shuttle crash, he signs up for the Fleet expecting death—but is assigned to their most prestigious command school."
+>
+  <article class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- Back link -->
+      <a href="/#books" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Books
+      </a>
+
+      <div class="grid lg:grid-cols-[400px_1fr] gap-12 items-start">
+        <!-- Book Cover -->
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-r from-accent-purple/20 to-accent-blue/20 rounded-2xl blur-2xl"></div>
+          <Image
+            src={cover}
+            alt="Lakes of Mars book cover"
+            class="relative rounded-xl shadow-2xl w-full"
+            widths={[320, 400, 500, 600]}
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px"
+            quality={75}
+          />
+        </div>
+
+        <!-- Book Details -->
+        <div>
+          <p class="text-accent-purple font-medium mb-2">Lakes of Mars Series #1</p>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Lakes of Mars</h1>
+
+          <div class="prose prose-invert prose-lg max-w-none mb-8 space-y-4">
+            <p class="text-gray-300 leading-relaxed">
+              Aaron Sheridan doesn't want to live anymore. His family just died in a shuttle crash and he'd been the one flying it. The Transit Authority ruled it "instrumentation error," but he knows his mind was drifting. He knows a few millimeters wouldn't have made a difference. And unable to handle the guilt, he signs up for the Fleet expecting a fatal deployment to the Rim War... but is instead assigned to their most prestigious command school, Corinth Station.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              The school's infamous for its ferocious, sink-or-swim instruction, sporting the highest attrition rates in the Fleet, psychologically breaking and rebuilding students. Initially, Aaron takes the brutality and the Machiavellian tactics of his peers in stride, but after he sticks up for his only friend, he makes himself a target of the most feared cadet on the station, Caelus Erik.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              Unsure of whom to trust and worried that anything he does will make others targets as well, Aaron retreats deeper and deeper inside himself, unwilling to play an unwinnable game. However, when he discovers that officer training isn't the station's sole purpose, it becomes increasingly clear that risking everything is the safest thing he can do.
+            </p>
+            <p class="text-gray-400 text-base italic">
+              This is the first book in the Lakes of Mars series. It contains some graphic language/violence.
+            </p>
+          </div>
+
+          <!-- Purchase Links -->
+          <div class="flex flex-wrap gap-4 mb-8">
+            <a
+              href="https://www.amazon.com/Lakes-Mars-Merritt-Graves-ebook/dp/B07TY9S9H7/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-accent-blue hover:bg-accent-blue/80 rounded-lg font-medium transition-all hover:scale-105"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+              Kindle / eBook
+            </a>
+            <a
+              href="https://www.audible.com/pd/Lakes-of-Mars-Audiobook/B0BTTZLV3R"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 rounded-lg font-medium transition-all hover:scale-105"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              </svg>
+              Audiobook
+            </a>
+          </div>
+
+          <!-- Soundtrack Section -->
+          <div class="p-6 bg-dark-800/50 rounded-xl border border-white/5">
+            <h3 class="font-semibold mb-2 flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent-purple" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              </svg>
+              Accompanying Soundtrack
+            </h3>
+            <p class="text-gray-400 text-sm mb-3">Experience the book with its original soundtrack</p>
+            <a
+              href="https://soundcloud.com/trapdoorsocial/sets/the-lakes-of-mars-soundtrack"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-accent-purple hover:text-accent-purple/80 transition-colors text-sm font-medium"
+            >
+              Listen on SoundCloud
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
