@@ -140,16 +140,16 @@ const books = [
         border-right: 2px solid rgba(156, 163, 175, 0.8);
         white-space: nowrap;
         margin: 0 auto;
-        width: fit-content;
+        width: 0;
         animation:
-          typing 2s steps(27, end) forwards,
-          blink-caret 0.75s step-end 4,
-          hide-caret 0.1s ease 3s forwards;
+          typing 2.5s steps(27, end) forwards,
+          blink-caret 0.75s step-end 12,
+          hide-caret 0.1s ease 11s forwards;
       }
 
       @keyframes typing {
         from { width: 0; }
-        to { width: 100%; }
+        to { width: 27ch; }
       }
 
       @keyframes blink-caret {
