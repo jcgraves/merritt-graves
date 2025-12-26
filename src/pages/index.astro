@@ -142,8 +142,9 @@ const books = [
         margin: 0 auto;
         width: fit-content;
         animation:
-          typing 2.5s steps(44, end) forwards,
-          blink-caret 0.75s step-end infinite;
+          typing 2s steps(27, end) forwards,
+          blink-caret 0.75s step-end 4,
+          hide-caret 0.1s ease 3s forwards;
       }
 
       @keyframes typing {
@@ -154,6 +155,10 @@ const books = [
       @keyframes blink-caret {
         from, to { border-color: transparent; }
         50% { border-color: rgba(156, 163, 175, 0.8); }
+      }
+
+      @keyframes hide-caret {
+        to { border-color: transparent; }
       }
 
       @media (prefers-reduced-motion: reduce) {
