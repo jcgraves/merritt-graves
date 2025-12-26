@@ -201,18 +201,31 @@ const books = [
         </div>
         <!-- Newsletter Signup -->
         <div class="max-w-md mx-auto p-6 bg-dark-800/50 backdrop-blur-sm rounded-xl border border-white/5">
-          <p class="text-sm text-gray-400 mb-3">Get updates on new releases and projects</p>
-          <a
-            href="https://mailchi.mp/4a6bc90e5ecb/lakesofmars"
+          <p class="text-sm text-gray-400 mb-4">Get updates on new releases and projects</p>
+          <form
+            action="https://sunlighttwentyfour.us17.list-manage.com/subscribe/post?u=a3083242d18183e09f8ac9748&amp;id=ff385aa8e2&amp;f_id=00dbe8e3f0"
+            method="post"
             target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-purple hover:bg-accent-purple/80 rounded-lg font-medium text-sm transition-all hover:scale-105"
+            class="flex gap-2"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            Subscribe to Newsletter
-          </a>
+            <input
+              type="email"
+              name="EMAIL"
+              placeholder="your@email.com"
+              required
+              class="flex-1 px-4 py-2.5 bg-dark-900 border border-white/10 rounded-lg text-sm focus:outline-none focus:border-accent-purple focus:ring-1 focus:ring-accent-purple transition-colors"
+            />
+            <!-- Honeypot field -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_a3083242d18183e09f8ac9748_ff385aa8e2" tabindex="-1" value="" />
+            </div>
+            <button
+              type="submit"
+              class="px-5 py-2.5 bg-accent-purple hover:bg-accent-purple/80 rounded-lg font-medium text-sm transition-all hover:scale-105"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
       <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
@@ -415,17 +428,29 @@ const books = [
             <p class="font-medium text-white">Stay in the loop</p>
             <p class="text-gray-500 text-sm">Get notified about new releases and projects</p>
           </div>
-          <a
-            href="https://mailchi.mp/4a6bc90e5ecb/lakesofmars"
+          <form
+            action="https://sunlighttwentyfour.us17.list-manage.com/subscribe/post?u=a3083242d18183e09f8ac9748&amp;id=ff385aa8e2&amp;f_id=00dbe8e3f0"
+            method="post"
             target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-purple hover:bg-accent-purple/80 rounded-lg font-medium text-sm transition-all hover:scale-105"
+            class="flex gap-2 w-full sm:w-auto"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            Subscribe to Newsletter
-          </a>
+            <input
+              type="email"
+              name="EMAIL"
+              placeholder="your@email.com"
+              required
+              class="flex-1 sm:w-48 px-4 py-2.5 bg-dark-800 border border-white/10 rounded-lg text-sm focus:outline-none focus:border-accent-purple focus:ring-1 focus:ring-accent-purple transition-colors"
+            />
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_a3083242d18183e09f8ac9748_ff385aa8e2" tabindex="-1" value="" />
+            </div>
+            <button
+              type="submit"
+              class="px-5 py-2.5 bg-accent-purple hover:bg-accent-purple/80 rounded-lg font-medium text-sm transition-all hover:scale-105"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
 
         <!-- Bottom row -->

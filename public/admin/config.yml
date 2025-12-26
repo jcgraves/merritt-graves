@@ -1,0 +1,21 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "books"
+    label: "Books"
+    folder: "src/content/books"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Cover Image", name: "cover", widget: "image" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Has Audiobook", name: "hasAudio", widget: "boolean", default: false }
+      - { label: "Amazon Link", name: "amazonLink", widget: "string", required: false }
+      - { label: "Audible Link", name: "audibleLink", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
