@@ -135,21 +135,25 @@ const books = [
       }
 
       /* Typewriter effect */
+      .typewriter-container {
+        display: inline-block;
+      }
+
       .typewriter {
+        display: inline-block;
         overflow: hidden;
         border-right: 2px solid rgba(156, 163, 175, 0.8);
         white-space: nowrap;
-        margin: 0 auto;
         width: 0;
         animation:
-          typing 2.5s steps(27, end) forwards,
-          blink-caret 0.75s step-end 12,
+          typing 2.5s steps(26, end) forwards,
+          blink-caret 0.75s step-end 15,
           hide-caret 0.1s ease 11s forwards;
       }
 
       @keyframes typing {
         from { width: 0; }
-        to { width: 27ch; }
+        to { width: 100%; }
       }
 
       @keyframes blink-caret {
@@ -165,7 +169,7 @@ const books = [
         .typewriter {
           animation: none;
           border-right: none;
-          width: auto;
+          width: 100%;
         }
       }
     </style>
@@ -189,8 +193,8 @@ const books = [
         <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
           Merritt Graves
         </h1>
-        <p class="typewriter text-xl md:text-2xl text-gray-400 mb-4 font-light">
-          Speculative Fiction Author
+        <p class="text-xl md:text-2xl text-gray-400 mb-4 font-light">
+          <span class="typewriter-container"><span class="typewriter">Speculative Fiction Author</span></span>
         </p>
         <blockquote class="text-lg md:text-xl text-gray-500 italic mb-8">
           "What's born in war, grows up in peace."
