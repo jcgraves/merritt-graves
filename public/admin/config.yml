@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: jcgraves/merritt-graves
+  name: git-gateway
   branch: main
 
 media_folder: "public/images"
