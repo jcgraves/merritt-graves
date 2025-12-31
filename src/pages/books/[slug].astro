@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Import book cover images for optimization
+import sunlight24 from '../../images/sunlight24_cover.jpg';
+import lakesOfMars from '../../images/LAKES OF MARS EBOOK COVER - PURPLE FLARE.jpg';
+import driveA from '../../images/Drive_A.jpg';
+import foreverX2 from '../../images/foreverx2.jpg';
+
+// Map slugs to imported images for Astro Image optimization
+const coverImages: Record<string, ImageMetadata> = {
+  'forever-x2': foreverX2,
+  'drive-a': driveA,
+  'sunlight-24': sunlight24,
+  'lakes-of-mars': lakesOfMars,
+};
+
+// Generate static paths for all books
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+  return books.map((book) => ({
+    params: { slug: book.slug },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
+const { Content } = await book.render();
+const coverImage = coverImages[book.slug];
+---
+
+<BaseLayout
+  title={`${book.data.title} | Merritt Graves`}
+  description={book.data.tagline}
+>
+  <article class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- Back link -->
+      <a href="/#books" class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back to Books
+      </a>
+
+      <div class="grid lg:grid-cols-[400px_1fr] gap-12 items-start">
+        <!-- Book Cover -->
+        <div class="relative">
+          <div class="absolute -inset-4 bg-gradient-to-r from-accent-purple/20 to-accent-blue/20 rounded-2xl blur-2xl"></div>
+          {coverImage && (
+            <Image
+              src={coverImage}
+              alt={`${book.data.title} book cover`}
+              class="relative rounded-xl shadow-2xl w-full"
+              widths={[320, 400, 500, 600]}
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 400px"
+              quality={75}
+            />
+          )}
+        </div>
+
+        <!-- Book Details -->
+        <div>
+          {book.data.series && (
+            <p class="text-accent-purple font-medium mb-2">{book.data.series}</p>
+          )}
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">{book.data.title}</h1>
+
+          <div class="prose prose-invert prose-lg max-w-none mb-8 space-y-4 [&>p]:text-gray-300 [&>p]:leading-relaxed [&>p:last-child]:text-gray-400 [&>p:last-child]:text-base [&>p:last-child]:italic">
+            <Content />
+          </div>
+
+          <!-- Purchase Links -->
+          <div class="flex flex-wrap gap-4 mb-8">
+            {book.data.amazonLink && (
+              <a
+                href={book.data.amazonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-accent-blue hover:bg-accent-blue/80 rounded-lg font-medium transition-all hover:scale-105"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Kindle / eBook
+              </a>
+            )}
+            {book.data.audibleLink && (
+              <a
+                href={book.data.audibleLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 rounded-lg font-medium transition-all hover:scale-105"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                </svg>
+                Audiobook
+              </a>
+            )}
+          </div>
+
+          <!-- Soundtrack Section (for Lakes of Mars) -->
+          {book.data.soundtrackLink && (
+            <div class="p-6 bg-dark-800/50 rounded-xl border border-white/5">
+              <h3 class="font-semibold mb-2 flex items-center gap-2">
+                <svg class="w-5 h-5 text-accent-purple" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                </svg>
+                Accompanying Soundtrack
+              </h3>
+              <p class="text-gray-400 text-sm mb-3">Experience the book with its original soundtrack</p>
+              <a
+                href={book.data.soundtrackLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-accent-purple hover:text-accent-purple/80 transition-colors text-sm font-medium"
+              >
+                Listen on SoundCloud
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

@@ -11,11 +11,50 @@ collections:
     folder: "src/content/books"
     create: true
     slug: "{{slug}}"
+    sortable_fields: ["order", "title"]
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Tagline (short description)", name: "tagline", widget: "string" }
       - { label: "Cover Image", name: "cover", widget: "image" }
-      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Display Order", name: "order", widget: "number", default: 0, hint: "Lower numbers appear first" }
       - { label: "Has Audiobook", name: "hasAudio", widget: "boolean", default: false }
       - { label: "Amazon Link", name: "amazonLink", widget: "string", required: false }
       - { label: "Audible Link", name: "audibleLink", widget: "string", required: false }
-      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Series Name", name: "series", widget: "string", required: false, hint: "e.g., 'Lakes of Mars Series #1'" }
+      - { label: "Soundtrack Link", name: "soundtrackLink", widget: "string", required: false }
+      - { label: "Full Description", name: "body", widget: "markdown" }
+
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "src/content/site/hero.yaml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Quote", name: "quote", widget: "string" }
+          - { label: "Quote Attribution", name: "quoteAttribution", widget: "string" }
+          - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
+          - { label: "Primary Button Link", name: "primaryButtonLink", widget: "string" }
+          - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
+          - { label: "Secondary Button Link", name: "secondaryButtonLink", widget: "string" }
+
+      - name: "about"
+        label: "About Section"
+        file: "src/content/site/about.yaml"
+        fields:
+          - { label: "Section Label", name: "sectionLabel", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+
+      - name: "contact"
+        label: "Contact Section"
+        file: "src/content/site/contact.yaml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Form Action URL", name: "formAction", widget: "string" }
